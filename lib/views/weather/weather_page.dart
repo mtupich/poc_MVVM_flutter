@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:poc_mvvm_flutter/core/utils/navigation_service.dart';
 import 'package:poc_mvvm_flutter/views/weather/weather_model.dart';
 import 'package:poc_mvvm_flutter/views/weather/weather_viewmodel.dart';
 
@@ -13,6 +14,7 @@ class WeatherPage extends StatefulWidget {
 class _WeatherPageState extends State<WeatherPage> {
 
   final WeatherViewmodel viewmodel = GetIt.instance<WeatherViewmodel>();
+  final navigationService = GetIt.I<NavigationService>();
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,9 @@ class _WeatherPageState extends State<WeatherPage> {
           title: Text('Weather Page'),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: null,
+          onPressed:() {
+            navigationService.navigateTo('weather_detail/weather_detail_page.dart');
+          },
           child: Icon(Icons.account_circle),  
         ),
         body: FutureBuilder<List<WeatherModel>?>(
