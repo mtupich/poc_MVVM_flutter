@@ -8,3 +8,4 @@ void setupLocator() {
   GetIt.instance.registerFactory<WeatherViewmodel>(() => WeatherViewmodel(GetIt.instance<WeatherRepository>()));
   GetIt.I.registerLazySingleton<NavigationService>(() => NavigationServiceImpl());
 }
+
